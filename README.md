@@ -1,6 +1,38 @@
 # SafeWalk AI
 
 SafeWalk AI is an AI-based safe route navigation prototype that helps users choose safer walking routes using route risk indicators such as crime level, lighting, crowd density, police presence, and travel time context.
+## Quick Start (How to Run)
+
+1. Clone the repository
+
+git clone https://github.com/saanvisanil/SafeWalk-AI.git  
+cd SafeWalk-AI
+
+
+2. Run backend
+
+cd backend  
+python -m venv venv  
+venv\Scripts\activate  
+python -m pip install -r requirements.txt  
+python app.py  
+
+
+Backend runs at:
+http://127.0.0.1:5000
+
+
+3. Run frontend
+
+Open frontend folder in VS Code  
+Right click index.html → Open with Live Server  
+
+
+App will open in browser.
+
+
+IMPORTANT:
+Backend must be running before clicking "Find Safe Routes".
 
 ## Features
 
