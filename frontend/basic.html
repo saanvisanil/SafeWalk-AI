@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SafeRoute AI</title>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="card">
+            <h1>🛡 SafeRoute AI</h1>
+            <p class="subtitle">AI-Powered Route Safety Predictor</p>
+
+            <input type="text" placeholder="Enter Start Location">
+            <input type="text" placeholder="Enter Destination">
+
+            <select id="time">
+                <option value="0">🌅 Morning</option>
+                <option value="1">🌇 Evening</option>
+                <option value="2">🌙 Night</option>
+            </select>
+
+            <button onclick="getRoutes()">Find Safest Route</button>
+            <div id="loading" style="display:none;">Loading safest routes...</div>
+            <div id="results"></div>
+
+            <div id="map"></div>
+
+            <button id="sosBtn" class="sos">🚨 Emergency SOS</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

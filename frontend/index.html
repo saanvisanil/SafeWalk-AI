@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeWalk AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="home">
+
+    <nav class="navbar">
+        <div class="nav-logo">🛡 SafeWalk AI</div>
+       <div class="nav-links">
+    <a href="#features" class="nav-pill">Features</a>
+    <a href="#howItWorks" class="nav-pill">How it Works</a>
+</div>
+    </nav>
+
+    <section class="hero premium-hero">
+        <div class="hero-content">
+            <div class="hero-badge">AI-Powered Personal Safety Navigation</div>
+            <h1>Walk Safer, Smarter, and With Confidence</h1>
+            <p class="hero-subtitle">
+                SafeWalk AI helps users choose safer walking routes using crime risk,
+                lighting, crowd density, police presence, and contextual travel safety logic.
+            </p>
+
+            <div class="hero-buttons">
+                <button onclick="openLoginModal()" class="start-btn">🚶 Launch SafeWalk</button>
+                <button onclick="enterGuestMode()" class="guest-btn">👤 Continue as Guest</button>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <h3>3+</h3>
+                    <p>Route Options</p>
+                </div>
+                <div class="stat-card">
+                    <h3>AI</h3>
+                    <p>Safety Scoring</p>
+                </div>
+                <div class="stat-card">
+                    <h3>24/7</h3>
+                    <p>Emergency Tools</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="feature-card">
+            <h3>🧠 Smart Safety Score</h3>
+            <p>Routes are ranked using crime, crowd density, lighting, and police presence.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🗺 Route Comparison</h3>
+            <p>Compare multiple route options and instantly identify the safest one.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🚨 Emergency Support</h3>
+            <p>SOS, trusted contact support, and nearby police assistance for emergencies.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🎯 Smart Safety Modes</h3>
+            <p>Women safety, student commute, and night travel modes personalize results.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🔥 Risk Map Overlay</h3>
+            <p>Understand high-risk zones visually before choosing a route.</p>
+        </div>
+        <div class="feature-card">
+            <h3>📤 Trip Sharing</h3>
+            <p>Share trip details with a trusted contact for added peace of mind.</p>
+        </div>
+    </section>
+
+    <section class="trust-section">
+        <div class="trust-card">
+            <h2>Built for public safety and real-world confidence</h2>
+            <p>
+                SafeWalk AI is designed to support safer mobility, especially for women,
+                students, and anyone travelling in unfamiliar or low-visibility places.
+            </p>
+        </div>
+    </section>
+
+    <section id="howItWorks" class="steps-section">
+        <h2>How SafeWalk AI Works</h2>
+        <div class="steps">
+            <div class="step">
+                <h3>1️⃣ Enter Route</h3>
+                <p>Enter your start location and destination.</p>
+            </div>
+            <div class="step">
+                <h3>2️⃣ Validate Places</h3>
+                <p>The app checks both locations before generating routes.</p>
+            </div>
+            <div class="step">
+                <h3>3️⃣ Analyze Safety</h3>
+                <p>AI evaluates route safety using multiple indicators.</p>
+            </div>
+            <div class="step">
+                <h3>4️⃣ Recommend Best Route</h3>
+                <p>The safest route is highlighted with explanation and risk label.</p>
+            </div>
+            <div class="step">
+                <h3>5️⃣ Emergency Assistance</h3>
+                <p>Users can trigger contact and police support during unsafe situations.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-box">
+            <h2>Launch SafeWalk AI</h2>
+            <p class="modal-sub">Enter your details to unlock full features</p>
+            <input type="text" id="loginName" placeholder="Enter your name">
+            <input type="email" id="loginEmail" placeholder="Enter your email">
+            <button onclick="saveLogin()" class="start-btn">Continue</button>
+            <button onclick="closeLoginModal()" class="modal-close-btn">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function openLoginModal() {
+            document.getElementById("loginModal").style.display = "flex";
+        }
+
+        function closeLoginModal() {
+            document.getElementById("loginModal").style.display = "none";
+        }
+
+        function saveLogin() {
+            const name = document.getElementById("loginName").value.trim();
+            const email = document.getElementById("loginEmail").value.trim();
+
+            if (!name || !email) {
+                alert("Please enter both name and email.");
+                return;
+            }
+
+            localStorage.setItem("sw_user_name", name);
+            localStorage.setItem("sw_user_email", email);
+            localStorage.setItem("sw_guest_mode", "false");
+
+            window.location.href = "pro.html";
+        }
+
+        function enterGuestMode() {
+    localStorage.setItem("sw_user_name", "Guest User");
+    localStorage.setItem("sw_user_email", "");
+    localStorage.setItem("sw_guest_mode", "true");
+
+    window.location.href = "pro.html";
+}
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeWalk AI Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+</head>
+<body class="dashboard">
+
+    <div class="topbar">
+        <a href="index.html" class="logo">🛡 SafeWalk AI</a>
+
+        <div class="top-actions">
+            <button class="tips-btn" onclick="toggleTips()">💡 Tips</button>
+            <button class="police-btn" onclick="alertPolice()">🚓 Police</button>
+            <button class="sos-btn" onclick="sendSOS()">🚨 SOS</button>
+
+            <div class="menu-wrapper">
+                <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+                <div id="menuDropdown" class="menu-dropdown">
+                    <div class="menu-section">
+                        <p><strong id="profileName">Guest User</strong></p>
+                        <p id="profileEmail">Guest Access</p>
+                        <p id="guestModeLabel">Mode: Guest</p>
+                    </div>
+                    <hr>
+                    <div class="menu-section">
+                        <p id="savedContactText">No emergency contact saved.</p>
+                        <button class="secondary-btn menu-action-btn" onclick="editContact()">Save / Edit Contact</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="dashboard-hero">
+        <h1>Plan Your Safer Route</h1>
+        <p>Compare route safety and choose the best option before you start walking.</p>
+    </section>
+
+    <div id="tipsPanel" class="tips-panel" style="display:none;">
+        <h3>💡 Safety Tips</h3>
+        <ul class="tips-list">
+            <li>Prefer well-lit roads at night.</li>
+            <li>Avoid isolated shortcuts in low-crowd areas.</li>
+            <li>Share your trip with a trusted contact before walking.</li>
+            <li>Use Women Safety or Night Mode for higher-risk timings.</li>
+        </ul>
+    </div>
+
+    <div class="route-input">
+        <input id="startInput" placeholder="Enter Start Location" onclick="showMap()">
+        <input id="destInput" placeholder="Enter Destination" onclick="showMap()">
+
+        <select id="time">
+            <option value="0">🌅 Morning</option>
+            <option value="1">🌇 Evening</option>
+            <option value="2">🌙 Night</option>
+        </select>
+
+        <select id="safetyMode">
+            <option value="standard">🛡 Standard</option>
+            <option value="women">👩 Women Safety Mode</option>
+            <option value="student">🎓 Student Commute Mode</option>
+            <option value="night">🌙 Night Travel Mode</option>
+        </select>
+
+        <button onclick="getRoutes()">Find Safe Routes</button>
+    </div>
+
+    <div class="legend-bar">
+        <div class="legend-item"><span class="legend-dot green"></span> Safe</div>
+        <div class="legend-item"><span class="legend-dot orange"></span> Moderate</div>
+        <div class="legend-item"><span class="legend-dot red"></span> Risky</div>
+    </div>
+
+    <div id="warningBanner"></div>
+
+    <div id="mapContainer" style="display:none;">
+        <div id="map"></div>
+    </div>
+
+    <div id="loading" style="display:none; text-align:center; margin-top:20px;">
+        Loading safe route options...
+    </div>
+
+    <div id="results"></div>
+
+    <div class="bottom-section">
+        <div class="panel-card share-card">
+            <h3>📤 Share My Trip</h3>
+            <p>Create a quick trip message for a trusted contact.</p>
+            <button class="secondary-btn" onclick="shareTrip()">Share Trip</button>
+        </div>
+
+        <div class="panel-card recent-card">
+            <h3>🕘 Recent Searches</h3>
+            <div id="recentSearches">No recent searches yet.</div>
+        </div>
+    </div>
+
+    <script src="script-pro.js"></script>
+</body>
+</html>
